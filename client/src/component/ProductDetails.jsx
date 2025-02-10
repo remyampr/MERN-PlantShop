@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
 import { addToCart } from "../Redux/productsSlice";
 import "../style/ProductDetails.css"
+import config from "../../config";
 
 const ProductDetails = () => {
 
@@ -32,7 +33,8 @@ if (!product) {
       <Row className="justify-content-center">
         <Col md={6}>
           <Image
-            src={`http://localhost:5100${product.image}`} 
+            // src={`http://localhost:5100${product.image}`} 
+            src={`${config.API_BASE_URL}${product.image}`}
             alt={product.name}
             fluid
             rounded

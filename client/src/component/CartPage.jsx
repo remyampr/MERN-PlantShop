@@ -4,6 +4,7 @@ import { FaTrash } from "react-icons/fa";
 import "../style/CartPage.css";
 import { removeFromCart,addToCart, selectTotalPrice } from "../Redux/productsSlice";
 import { Link } from "react-router-dom";
+import config from "../../config";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,8 @@ const CartPage = () => {
                     <Card.Img
                       variant="top"
                       className="cart-plant-card-image"
-                      src={`http://localhost:5100${item.image}`} 
+                      // src={`http://localhost:5100${item.image}`} 
+                      src={`${config.API_BASE_URL}${item.image}`}
                       alt={item.name}
                       loading="lazy"
                     />

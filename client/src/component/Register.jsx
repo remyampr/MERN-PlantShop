@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Form, Alert } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import config from "../../config";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const Register = () => {
     setError(""); // Clear any previous errors
 
     try {
-      const response = await axios.post("http://localhost:5100/api/auth/register", {
+      const response = await axios.post(`${ config.API_BASE_URL}/api/auth/register`, {
         email,
         password,
         name,

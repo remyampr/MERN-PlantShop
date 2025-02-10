@@ -4,6 +4,7 @@ import CarouselSection from "./CarouselSection";
 import { Card, Button } from 'react-bootstrap';
 import { Link,useNavigate } from "react-router-dom";
 import "../style/ProductListing.css"
+import config from "../../config";
 
 const ProductListing = ({products,showCarousel=false}) => {
   const dispatch = useDispatch();
@@ -43,7 +44,8 @@ if (!Array.isArray(products) || products.length === 0) {
                     <Card className="plant-card neumorphic-card">
                       <Card.Img 
                         variant="top" 
-                        src={`http://localhost:5100${product.image}`} 
+                        // src={`http://localhost:5100${product.image}`} 
+                        src={`${config.API_BASE_URL}${product.image}`}
                         alt={product.name}
                         className="plant-card-image"
                         loading="lazy"

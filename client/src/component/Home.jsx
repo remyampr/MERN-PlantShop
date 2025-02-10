@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { setProducts } from "../Redux/productsSlice";
 import ProductListing from "./ProductListing";
 import axios from "axios";
+import config from "../../config";
 
 const Home = () => {
 
@@ -32,7 +33,8 @@ const filteredProducts = useSelector((state) => state.products.filteredProducts)
 
 useEffect(() => {
   // Fetch products from the backend using Axios
-  axios.get('http://localhost:5100/api/products') // Replace with your API endpoint
+  // axios.get('http://localhost:5100/api/products')
+  axios.get(`${ config.API_BASE_URL}/api/products`)
     .then((response) => {
     
       if (response.status === 200) {
