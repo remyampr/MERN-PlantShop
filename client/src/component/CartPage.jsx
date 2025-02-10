@@ -15,8 +15,8 @@ const CartPage = () => {
   const totalPrice=useSelector(selectTotalPrice);
   // console.log("Total Price :",totalPrice);
 
-  const handleDelete = (id) => {
-    dispatch(removeFromCart(id));
+  const handleDelete = (_id) => {
+    dispatch(removeFromCart(_id));
   };
 
   const handleAdd=(item)=>{
@@ -39,14 +39,14 @@ const CartPage = () => {
           </Col>
         ) : (
           cartItems.map((item) => (
-            <Col xs={12} md={10} lg={10} className="left" key={item.id}>
+            <Col xs={12} md={10} lg={10} className="left" key={item._id}>
               <Card className="mb-3 cart-plant-card">
                 <Row>
                   <Col md={3} className="cart-img-container">
                     <Card.Img
                       variant="top"
                       className="cart-plant-card-image"
-                      src={`/images/${item.image}`}
+                      src={`http://localhost:5100${item.image}`} 
                       alt={item.name}
                       loading="lazy"
                     />
@@ -69,13 +69,13 @@ const CartPage = () => {
                           <Button
                             variant="danger"
                             size="sm"
-                            onClick={() => handleDelete(item.id)}
+                            onClick={() => handleDelete(item._id)}
                           >
                             -
                           </Button>
                       <FaTrash
                         className="cart-delete-icon"
-                        onClick={() => handleDelete(item.id)}
+                        onClick={() => handleDelete(item._id)}
                       />
                       </div>
                     </Card.Body>
@@ -95,7 +95,7 @@ const CartPage = () => {
             <ul className="list-unstyled">
                 {
                     cartItems.map((item)=> (
-                        <li key={item.id}
+                        <li key={item._id}
                         className="d-flex justify-content-between">
                             <span>{item.name} * {item.quantity }</span>
                             <span>AED {item.price * item.quantity}</span>

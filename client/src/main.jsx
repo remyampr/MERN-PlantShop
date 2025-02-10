@@ -13,6 +13,9 @@ import ErrorPage from "./component/ErrorPage.jsx";
 import { Provider } from "react-redux";
 import CartPage from "./component/CartPage.jsx";
 import ProductDetails from "./component/ProductDetails.jsx";
+import Login from "./component/Login.jsx";
+import Register from "./component/Register.jsx";
+import ProtectedRoute from "./component/ProtectedRoute.jsx"
 
 const router = createBrowserRouter([
   {
@@ -24,7 +27,18 @@ const router = createBrowserRouter([
       { path: "/category/:category", element: <CategoryPage /> },
       { path: "/product-details/:productId", element: <ProductDetails /> },
 
-      { path: "/cart", element: <CartPage /> },
+      { path: "/login", element: <Login /> },  
+      { path: "/register", element: <Register /> }, 
+      { 
+        path: "/cart", 
+        element: <ProtectedRoute><CartPage /></ProtectedRoute> 
+      }
+   
+      
+      // { 
+      //   path: "/protected", 
+      //   element: <ProtectedRoute><ProtectedComponent /></ProtectedRoute>  
+      // },
     ],
   },
 ]);

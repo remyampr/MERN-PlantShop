@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import {
   Navbar,
   Nav,
@@ -12,9 +12,58 @@ import { FaSearch, FaUser, FaBars, FaTimes, FaShoppingCart } from "react-icons/f
 
 import "../style/HeaderSection.css"
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTotalPrice,searchProducts } from '../Redux/productsSlice';
+import { selectTotalPrice,searchProducts,clearCart } from '../Redux/productsSlice';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const HeaderSection = () => {
+
+// for Login
+const [isAuthenticated, setIsAuthenticated] = useState(false);
+const [userName] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
+
+ 
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token"); // Remove token
+  //   setIsAuthenticated(false); 
+  //   navigate("/login");
+  // };
+
+  const handleCartClick = () => {
+    if (!isAuthenticated) {
+      navigate("/login"); // Redirect to login if not authenticated
+    } else {
+      navigate("/cart"); // Proceed to cart if authenticated
+    }
+  };
+
+
+// for Login
+
+
+// 
+
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  setIsAuthenticated(false);
+  dispatch(clearCart()); // Clear the cart when logging out
+  navigate("/login");
+};
+// 
+
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -86,11 +135,15 @@ const handleSearch=(event)=>{
                 {showSearch ? <FaTimes size={20} /> : <FaSearch size={20} />}
               </button>
 
-              <Nav.Link as={NavLink} to="#account" className="p-0 user">
+              <Nav.Link as={NavLink} to={isAuthenticated ? "/profile" : "/login"} className="p-0 user">
                 <FaUser size={20} />
               </Nav.Link>
+               {/* Show Logout Button if Logged In  */}
+               {isAuthenticated && (
+        <button onClick={handleLogout}>Logout</button>
+      )}
               
-              <Nav.Link as={NavLink} to="/cart" className="d-flex align-items-center p-0 cart">
+              <Nav.Link onClick={handleCartClick} className="d-flex align-items-center p-0 cart">
                 <div className="position-relative">
                   <FaShoppingCart size={20} />
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">

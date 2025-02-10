@@ -2,13 +2,21 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../Redux/productsSlice";
 import CarouselSection from "./CarouselSection";
 import { Card, Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "../style/ProductListing.css"
 
 const ProductListing = ({products,showCarousel=false}) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
   const handleAddToCart = (product) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // If no token, redirect to login
+      navigate("/login");
+      return;
+    }
+     // If authenticated, add to cart
     dispatch(addToCart(product));
     console.log("Cart items : ",product);
   };
@@ -31,11 +39,11 @@ if (!Array.isArray(products) || products.length === 0) {
                 <div className="row g-4">
                     {
                    products.map((product)=>(
-                    <div key={product.id} className="col-12 col-sm-6 col-md-3 col-lg-3">
+                    <div key={product._id} className="col-12 col-sm-6 col-md-3 col-lg-3">
                     <Card className="plant-card neumorphic-card">
                       <Card.Img 
                         variant="top" 
-                        src={`/images/${product.image}`} 
+                        src={`http://localhost:5100${product.image}`} 
                         alt={product.name}
                         className="plant-card-image"
                         loading="lazy"
@@ -54,7 +62,7 @@ if (!Array.isArray(products) || products.length === 0) {
                         >
                           Add to Cart
                         </Button>
-                        <Link to={`/product-details/${product.id}`} className="btn btn-info mt-2
+                        <Link to={`/product-details/${product._id}`} className="btn btn-info mt-2
                         plant-card-link ">
                       View Details
                     </Link>

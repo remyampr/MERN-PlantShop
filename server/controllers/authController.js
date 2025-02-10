@@ -42,7 +42,9 @@ const JWT_SECRET=process.env.JWT_SECRET;
 const loginUser=async (req,res,next)=>{
     try{
         const {email,password}=req.body;
+        // console.log("email + pass",email,password)
         const user= await User.findOne({email});
+        // console.log("User: ",user)
         if(!user) return res.status(400).json({msg : "invalid credentials"});
 
         const isMatch=await bcrypt.compare(password,user.password);
@@ -50,7 +52,7 @@ const loginUser=async (req,res,next)=>{
 
           // Generate a JWT token including the isAdmin field
         const token=jwt.sign({id:user._id,isAdmin:user.isAdmin},JWT_SECRET,{expiresIn:"1h"});
-        res.json({msg:"Login successful",token,User:{id:user._id,Name:user.name,Email:user.email,isAdmin:user.isAdmin}})
+        res.status(200).json({msg:"Login successful",token,User:{id:user._id,Name:user.name,Email:user.email,isAdmin:user.isAdmin}})
 
 
     }catch(err){

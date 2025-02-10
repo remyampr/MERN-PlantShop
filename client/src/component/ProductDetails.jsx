@@ -10,7 +10,7 @@ const {productId}=useParams();
 const dispatch=useDispatch();
 const products=useSelector((state)=>state.products.products);
 
-const product = products.find((p) => p.id === Number(productId));
+const product = products.find((p) => p._id === String(productId));
 
 if (!product) {
   // console.log("inside Product details products array  :",products);
@@ -32,7 +32,7 @@ if (!product) {
       <Row className="justify-content-center">
         <Col md={6}>
           <Image
-            src={`/images/${product.image}`}
+            src={`http://localhost:5100${product.image}`} 
             alt={product.name}
             fluid
             rounded
