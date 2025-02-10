@@ -14,7 +14,7 @@ app.use(express.json());
 // app.use(cors())
 
 app.use(cors({
-    origin: 'http://localhost:5173',  // Replace with your frontend URL
+  origin: 'https://mern-plant-shop-client-frontend.vercel.app',  //  frontend URL
     methods: 'GET,POST,PUT,DELETE',  // Allow specific HTTP methods
     allowedHeaders: 'Content-Type,Authorization',  // Allow specific headers
   }));
