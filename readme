@@ -1,0 +1,48 @@
+Backend (Node.js & Express)
+📌 Core Packages:
+
+express – Web framework for building the server.
+dotenv – Manage environment variables.
+cors – Enable Cross-Origin Resource Sharing.
+mongoose – Connect and interact with MongoDB.
+nodemon (dev dependency) – Auto-restarts the server during development.
+📌 Authentication & Security:
+
+jsonwebtoken – Generate and verify JWT tokens.
+bcryptjs – Hash passwords for secure authentication.
+cookie-parser – Manage cookies for authentication.
+express-validator – Validate user inputs.
+helmet – Secure HTTP headers.
+morgan – Logger for tracking API requests.
+📌 File Handling & Payments (Optional):
+
+multer – Handle file uploads (for product images).
+Multer is a middleware for handling file uploads in Node.js applications. It works with Express.js and is commonly used to upload images, documents, or any other file types to a server.
+stripe or razorpay – Payment gateway integration.
+Frontend (React.js)
+📌 Core Packages:
+
+react-router-dom – Client-side routing.
+axios – Handle API requests.
+redux & @reduxjs/toolkit – Manage global state (optional but useful).
+react-redux – Connect Redux with React.
+jwt-decode – Decode JWT tokens.
+📌 Styling:
+
+bootstrap or react-bootstrap – UI framework.
+styled-components or tailwindcss (optional) – Custom styling.
+📌 Other Useful Packages:
+
+react-toastify – Display notifications.
+react-hook-form – Handle form validation easily.
+redux-persist – Persist Redux state in local storage.
+Deployment Tools
+📌 For Backend:
+
+vercel or render – Host the backend.
+mongodb atlas – Cloud MongoDB database.
+📌 For Frontend:
+
+vercel – Deploy the React app.
+
+
