@@ -13,10 +13,19 @@ const app=express();
 app.use(express.json());
 // app.use(cors())
 
-app.use(cors({
-  origin: 'https://mern-plant-shop-client-frontend.vercel.app',  //  frontend URL
-    methods: 'GET,POST,PUT,DELETE',  // Allow specific HTTP methods
-    allowedHeaders: 'Content-Type,Authorization',  // Allow specific headers
+// app.use(cors({
+//   origin: 'https://mern-plant-shop-client-frontend.vercel.app',  //  frontend URL
+//     methods: 'GET,POST,PUT,DELETE',  // Allow specific HTTP methods
+//     allowedHeaders: 'Content-Type,Authorization',  // Allow specific headers
+//   }));
+
+  app.use(cors({
+    origin: [
+      'https://mern-plant-shop-client-frontend.vercel.app',
+      'http://localhost:5173'
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
   }));
   
 
