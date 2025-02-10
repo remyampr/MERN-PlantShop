@@ -1,0 +1,29 @@
+.soft-ui-carousel {
+    background-color: #f0f4f8;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .carousel-item-soft {
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .carousel-caption-soft {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .carousel-caption-soft h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .carousel-caption-soft p {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+.carousel-item-soft img{
+    height: 240px;
+    object-fit: center;
+}  

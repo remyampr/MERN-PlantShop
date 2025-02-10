@@ -1,0 +1,5 @@
+1. HeaderSection Component:
+Imports:
+useState, useDispatch, useSelector: These are React hooks used for managing state and interacting with Redux.
+React Bootstrap components (Navbar, Nav, Form, etc.) for UI layout.
+Search, FaUser, FaBars, FaTimes, FaShoppingCart: Icons used in the header.

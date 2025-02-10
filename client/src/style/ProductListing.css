@@ -1,0 +1,54 @@
+.plant-card {
+    background: #F1F1F1;
+  border-radius: 15px;
+  box-shadow: 
+    8px 8px 15px #d1d1d1, 
+    -8px -8px 15px #ffffff; 
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.3s ease-in-out;
+}
+.plant-card .product-name{
+  font-size: 20px;
+}
+.plant-card:hover{
+    transform: scale(1.03); 
+    box-shadow: 
+      6px 6px 12px #d1d1d1, 
+      -6px -6px 12px #ffffff;
+}
+.plant-card-image{
+  border-radius: 15px;
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+  box-shadow: 
+    inset 4px 4px 6px #d1d1d1, 
+    inset -4px -4px 6px #ffffff; 
+  }
+  .plant-card-button-box{
+    text-align: center;
+  }
+.plant-card-button,
+.plant-card-link{
+  
+    background: #F1F1F1;
+    
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: bold;
+  box-shadow: 
+    4px 4px 6px #d1d1d1, 
+    -4px -4px 6px #ffffff; 
+  color: #333;
+  transition: box-shadow 0.3s ease, transform 0.2s;
+}
+.plant-card-button:hover,
+.plant-card-link:hover{
+    box-shadow: 
+    2px 2px 4px #d1d1d1, 
+    -2px -2px 4px #ffffff;
+  transform: translateY(-1px); 
+  cursor: pointer;
+}
