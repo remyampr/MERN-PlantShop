@@ -21,7 +21,7 @@ app.use(express.json());
 
   app.use(cors({
     origin: [
-      'https://mern-plant-shop-client-frontend.vercel.app',
+      'https://mern-plant-shopclient-rose.vercel.app',
       'http://localhost:5173'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -30,7 +30,10 @@ app.use(express.json());
   
 
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI,{
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+})
 .then(()=> console.log("MongoDb Connected: : "))
 .catch((err)=>console.log(err))
 
